@@ -176,36 +176,118 @@ def binary_search(my_list, key):
 
 ### Your analysis
 
-Let $n$ represent
+Let $n$ represent the number of elements being searched from `low_index` to `high_index`, thus $n = low_index - high_index + 1$. On the first call $n = len(my_list)$
 
-Let $T(n)$ represent
+Let $T(n)$ represent the number of operations to search a range of n elements in the worst case, where `key` is not in `my_list`.
 
 ```python
 def recursive_binary_search(my_list, key, low_index, high_index):
-    if low_index > high_index:                                                    #
-        return -1                                                                 #
-    mid_index = (low_index + high_index) // 2                                     #
-    if key == my_list[mid_index]:                                                 #
-        return mid_index                                                          #
-    elif key < my_list[mid_index]:                                                #
-        return recursive_binary_search(my_list, key, low_index, mid_index - 1)    #
+    if low_index > high_index:                                                    # 1
+        return -1                                                                 # 1
+    mid_index = (low_index + high_index) // 2                                     # 3
+    if key == my_list[mid_index]:                                                 # 2
+        return mid_index                                                          # 1
+    elif key < my_list[mid_index]:                                                # 2
+        return recursive_binary_search(my_list, key, low_index, mid_index - 1)    # 2 + T(n-1/2)
     else:
-        return recursive_binary_search(my_list, key, mid_index + 1, high_index)   #
+        return recursive_binary_search(my_list, key, mid_index + 1, high_index)   # 2 + T(n/2)
 
 
 def binary_search(my_list, key):
-    return recursive_binary_search(my_list, key, 0, len(my_list) - 1)             #
+    return recursive_binary_search(my_list, key, 0, len(my_list) - 1)             # 3 + T(n)
 ```
 
 **Base case(s):**
 
+The condition `low_index` $>$ `high_index` is only true when the range is empty, so $n = 0$. Thus we do exactly 2 operations.
+
+```python
+    if low_index > high_index:                                                    # 1
+        return -1                                                                 # 1
+```
+
+Thus, we have: $T(0) = 2$.
+
 **Recursive case:**
+
+$$
+\begin{tabular}{|l|c|r|}
+\hline
+n & Left half size \frac{n-1}{2} & Right half size \frac{n}{2} \\
+\hline
+1 & 0 & 0 \\
+2 & 0 & 1 \\
+3 & 1 & 1 \\
+4 & 1 & 2 \\
+\dots & \dots & \dots \\
+9 & 4        & 4 \\
+10 & 4        & 5 \\
+\hline
+\end{tabular}
+$$
+
+Looking at the left and right branches, we can see that the right branch is never smaller than the left branch. Thus the right branch is the worst case.
+
+If $n \geq 1$, the worst case does the following operations:
+
+```python
+if low_index > high_index:                                              # 1
+mid_index = (low_index + high_index) // 2                               # 3
+if key == my_list[mid_index]:                                           # 2
+elif key < my_list[mid_index]:                                          # 2
+return recursive_binary_search(my_list, key, mid_index + 1, high_index) # 2 + T(n/2)
+```
+
+Thus, we can write the general $T(n)$ for $n \geq 1$ as follows:
+
+$$
+\begin{aligned}
+T(n) &= 1 + 3 + 2 + 2 + 2 + T(\frac{n}{2}) \\
+T(n) &= 10 + T(\frac{n}{2})
+\end{aligned}
+$$
+
+By the same token, we can say:
+
+$$
+\begin{aligned}
+T(\frac{n}{2}) &= 10 + T(\frac{n}{4}) \\
+T(\frac{n}{4}) &= 10 + T(\frac{n}{8}) \\
+T(\frac{n}{8}) &= 10 + T(\frac{n}{16}) \\
+\dots
+\end{aligned}
+$$
 
 **Expansion:**
 
+The recurrence holds for all $n \geq 1$, and we also know that $T(0) = 2$. Thus, what we have is:
+
+$$
+\begin{aligned}
+T(n) &= 10 + T(\frac{n}{2}) \\
+&= 10 + 10 + T(\frac{n}{4}) \\
+&= 10 + 10 + 10 + T(\frac{n}{8}) \\
+\dots \\
+&= 10k + T(\frac{n}{2^k}) \\
+\dots \\
+T(n) &= 10 + 10 + 10 + \dots\ + 10 + 2
+\end{aligned}
+$$
+
+Each 10 halves $n$. We reach $T(1)$ when $\frac{n}{2^k} = 1$, which means $n = 2^k$, so $k = \log_{2} n$. One more step takes us from $T(1)$ to $T(0)$, which gives us the 2. So there are a total of $\log_{2} n + 1$ 10's
+
 **Closed form:**
 
+$$
+\begin{aligned}
+T(n) &= 10(\log_{2} n + 1) + 2
+T(n) &= 10\log_{2} n + 12
+\end{aligned}
+$$
+
 **Big-O:**
+
+Thus, $T(n)$ is $O(\log n)$.
 
 ---
 
