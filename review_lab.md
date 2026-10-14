@@ -211,7 +211,8 @@ Thus, we have: $T(0) = 2$.
 **Recursive case:**
 
 $$
-\begin{tabular}{|l|c|r|}
+% \begin{tabular}{|l|c|r|}
+\begin{table}[htbp]
 \hline
 n & Left half size \frac{n-1}{2} & Right half size \frac{n}{2} \\
 \hline
@@ -223,7 +224,7 @@ n & Left half size \frac{n-1}{2} & Right half size \frac{n}{2} \\
 9 & 4        & 4 \\
 10 & 4        & 5 \\
 \hline
-\end{tabular}
+\end{table}
 $$
 
 Looking at the left and right branches, we can see that the right branch is never smaller than the left branch. Thus the right branch is the worst case.
