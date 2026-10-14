@@ -120,7 +120,7 @@ $$
 
 **Expansion:**
 
-Since, $T(n) &= 5 + T(n-1)$, we have:
+Since, $T(n) = 5 + T(n-1)$, we have:
 
 $$
 \begin{aligned}
@@ -135,6 +135,7 @@ $$
 There are a total of $(n-1)$ 5's. We know this because we need to reach $T(1)$ to get the 3.
 
 **Closed form:**
+
 Thus:
 
 $$
@@ -145,6 +146,7 @@ T(n) &= 5n - 2
 $$
 
 **Big-O:**
+
 Therefore, $T(n)$ is $O(n)$.
 
 ---
