@@ -76,6 +76,7 @@ def linear_search(my_list, key):
 ```
 
 **Base case(s):**
+
 If `my_list` is empty or the first value in `my_list` is the `key` or the only value in `my_list` is the `key`, then we do at most 3 operations:
 
 ```python
@@ -96,6 +97,7 @@ T(1) &= 2 + 1 = 3
 $$
 
 **Recursive case:**
+
 For our recursive case, we have $2 + 2 + 1 + T(n-1)$ operations:
 
 ```python
@@ -117,6 +119,7 @@ T(n) &= 5 + T(n-1)
 $$
 
 **Expansion:**
+
 Since, $T(n) &= 5 + T(n-1)$, we have:
 
 $$
@@ -124,7 +127,7 @@ $$
 T(n) &= 5 + T(n-1) \\
 T(n-1) &= 5 + T(n-2) \\
 T(n-2) &= 5 + T(n-3) \\
-... \\
+\dots \\
 T(1) &= 3
 \end{aligned}
 $$
