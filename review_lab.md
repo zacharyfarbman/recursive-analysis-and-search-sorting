@@ -245,9 +245,9 @@ By the same token, we can say:
 
 $$
 \begin{aligned}
-T(\frac{n}{2}) &= 10 + T\left(\frac{n}{4}\right) \\
-T(\frac{n}{4}) &= 10 + T\left(\frac{n}{8}\right) \\
-T(\frac{n}{8}) &= 10 + T\left(\frac{n}{16}\right) \\
+T\left(\frac{n}{2}\right) &= 10 + T\left(\frac{n}{4}\right) \\
+T\left(\frac{n}{4}\right) &= 10 + T\left(\frac{n}{8}\right) \\
+T\left(\frac{n}{8}\right) &= 10 + T\left(\frac{n}{16}\right) \\
 \dots
 \end{aligned}
 $$
