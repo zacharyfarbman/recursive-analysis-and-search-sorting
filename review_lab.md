@@ -210,21 +210,15 @@ Thus, we have: $T(0) = 2$.
 
 **Recursive case:**
 
-```math
-\begin{array}{|l|c|r|}
-\hline
-n & \text{Left half size } \left\lfloor \frac{n-1}{2} \right\rfloor & \text{Right half size } \left\lfloor \frac{n}{2} \right\rfloor \\
-\hline
-1 & 0 & 0 \\
-2 & 0 & 1 \\
-3 & 1 & 1 \\
-4 & 1 & 2 \\
-\vdots & \vdots & \vdots \\
-9 & 4 & 4 \\
-10 & 4 & 5 \\
-\hline
-\end{array}
-```
+| $n$ | Left half size $\lfloor (n-1)/2 \rfloor$ | Right half size $\lfloor n/2 \rfloor$ |
+| --- | --- | --- |
+| 1 | 0 | 0 |
+| 2 | 0 | 1 |
+| 3 | 1 | 1 |
+| 4 | 1 | 2 |
+| ⋮ | ⋮ | ⋮ |
+| 9 | 4 | 4 |
+| 10 | 4 | 5 |
 
 Looking at the left and right branches, we can see that the right branch is never smaller than the left branch. Thus the right branch is the worst case.
 
