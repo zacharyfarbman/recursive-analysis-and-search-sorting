@@ -236,8 +236,8 @@ Thus, we can write the general $T(n)$ for $n \geq 1$ as follows:
 
 $$
 \begin{aligned}
-T(n) &= 1 + 3 + 2 + 2 + 2 + T(\frac{n}{2}) \\
-T(n) &= 10 + T(\frac{n}{2})
+T(n) &= 1 + 3 + 2 + 2 + 2 + T\left\frac{n}{2}\right \\
+T(n) &= 10 + T\left\frac{n}{2}\right
 \end{aligned}
 $$
 
