@@ -245,9 +245,9 @@ By the same token, we can say:
 
 $$
 \begin{aligned}
-T(\frac{n}{2}) &= 10 + T(\frac{n}{4}) \\
-T(\frac{n}{4}) &= 10 + T(\frac{n}{8}) \\
-T(\frac{n}{8}) &= 10 + T(\frac{n}{16}) \\
+T(\frac{n}{2}) &= 10 + T\left(\frac{n}{4}\right) \\
+T(\frac{n}{4}) &= 10 + T\left(\frac{n}{8}\right) \\
+T(\frac{n}{8}) &= 10 + T\left(\frac{n}{16}\right) \\
 \dots
 \end{aligned}
 $$
@@ -258,11 +258,11 @@ The recurrence holds for all $n \geq 1$, and we also know that $T(0) = 2$. Thus,
 
 $$
 \begin{aligned}
-T(n) &= 10 + T(\frac{n}{2}) \\
-&= 10 + 10 + T(\frac{n}{4}) \\
-&= 10 + 10 + 10 + T(\frac{n}{8}) \\
+T(n) &= 10 + T\left(\frac{n}{2}\right) \\
+&= 10 + 10 + T\left(\frac{n}{4}\right) \\
+&= 10 + 10 + 10 + T\left(\frac{n}{8}\right) \\
 \dots \\
-&= 10k + T(\frac{n}{2^k}) \\
+&= 10k + T\left(\frac{n}{2^k}\right) \\
 \dots \\
 T(n) &= 10 + 10 + 10 + \dots\ + 10 + 2
 \end{aligned}
